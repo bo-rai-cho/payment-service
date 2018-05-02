@@ -46,7 +46,7 @@ public class CardValidationClientTest {
         return builder
                 .given("normal card")
                 .uponReceiving("card validation request")
-                    .path("/card/" + TEST_CARD.getCardNumber())
+                    .path("/card/get/" + TEST_CARD.getCardNumber())
                     .method("GET")
                 .willRespondWith()
                     .headers(headers)
