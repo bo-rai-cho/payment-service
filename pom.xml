@@ -84,11 +84,8 @@
                 <version>3.5.13</version>
                 <configuration>
                     <pactBrokerUrl>http://localhost:8081</pactBrokerUrl>
-                    <serviceProviders>
-                        <serviceProvider>
-                            <name>CardValidationService</name>
-                        </serviceProvider>
-                    </serviceProviders>
+                    <trimSnapshot>true</trimSnapshot>
+                    <projectVersion>1.0.100</projectVersion>
                 </configuration>
             </plugin>
         </plugins>
