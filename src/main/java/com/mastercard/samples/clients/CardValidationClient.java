@@ -14,8 +14,6 @@ public class CardValidationClient {
 
     public Boolean isValid(Card card) {
 
-        return restOperations.getForEntity("http://localhost:8090/card/" + card.getCardNumber(), Card.class)
-                .getBody()
-                .getValid();
+        return restOperations.getForEntity("http://localhost:8090/card/" + card.getCardNumber(), Card.class).hasBody();
     }
 }

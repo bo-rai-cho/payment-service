@@ -84,8 +84,11 @@
                 <version>3.5.13</version>
                 <configuration>
                     <pactBrokerUrl>http://localhost:8081</pactBrokerUrl>
-                    <projectVersion>1.0.100</projectVersion> <!-- Defaults to ${project.version} -->
-                    <trimSnapshot>true</trimSnapshot> <!-- Defaults to false -->
+                    <serviceProviders>
+                        <serviceProvider>
+                            <name>CardValidationService</name>
+                        </serviceProvider>
+                    </serviceProviders>
                 </configuration>
             </plugin>
         </plugins>

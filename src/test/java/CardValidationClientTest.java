@@ -18,6 +18,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.client.RestOperations;
 
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,7 +37,7 @@ public class CardValidationClientTest {
     @Autowired
     private RestOperations restOperations;
 
-    @Pact(consumer = "PaymentService")
+    @Pact(consumer = "PaymentService", provider = "CardValidationService")
     public RequestResponsePact okResponse(PactDslWithProvider builder) {
 
         Map<String, String> headers = new HashMap<>();
@@ -58,13 +59,12 @@ public class CardValidationClientTest {
     @PactVerification
     public void testNormalCard() {
 
-        ResponseEntity<Card> re = restOperations.getForEntity(mockProvider.getUrl() + "/card/" + TEST_CARD.getCardNumber(), Card.class);
+        ResponseEntity<Card> re = restOperations.getForEntity(mockProvider.getUrl() + "/card/get/" + TEST_CARD.getCardNumber(), Card.class);
 
-        Card c = re.getBody();
+        Card expected = new Card(TEST_CARD.getOwner(), TEST_CARD.getCardNumber(), true);
+        Card received = re.getBody();
 
-        Assert.assertEquals(TEST_CARD.getCardNumber(), c.getCardNumber());
-        Assert.assertEquals(TEST_CARD.getOwner(), c.getOwner());
-        Assert.assertEquals(true, c.getValid());
+        Assert.assertEquals(expected, received);
 
     }
 
