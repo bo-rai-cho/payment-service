@@ -8,7 +8,7 @@ public class CardValidationClient {
 
     private RestOperations restOperations;
 
-    public static String EXTERNAL_URL = "http://localhost:8090/card/get/";
+    public static String EXTERNAL_URL = "http://docker.for.mac.localhost:8090/card/get/";
 
     public CardValidationClient(RestOperations restOperations) {
         this.restOperations = restOperations;
