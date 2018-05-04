@@ -15,7 +15,7 @@ import lombok.Data;
 public final class Card {
 
     private String owner;
-    private Long card;
+    private Long cardNumber;
     private Boolean valid;
 
     public String toJsonString() {

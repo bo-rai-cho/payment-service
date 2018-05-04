@@ -46,12 +46,12 @@ public class CardValidationClientTest {
         return builder
                 .given("normal card")
                 .uponReceiving("card validation request")
-                    .path("/card/get/" + TEST_CARD.getCard())
+                    .path("/card/get/" + TEST_CARD.getCardNumber())
                     .method("GET")
                 .willRespondWith()
                     .headers(headers)
                     .status(200)
-                    .body(new Card(TEST_CARD.getOwner(), TEST_CARD.getCard(), true).toJsonString())
+                    .body(new Card(TEST_CARD.getOwner(), TEST_CARD.getCardNumber(), true).toJsonString())
                 .toPact();
     }
 
@@ -59,9 +59,9 @@ public class CardValidationClientTest {
     @PactVerification
     public void testNormalCard() {
 
-        ResponseEntity<Card> re = restOperations.getForEntity(mockProvider.getUrl() + "/card/get/" + TEST_CARD.getCard(), Card.class);
+        ResponseEntity<Card> re = restOperations.getForEntity(mockProvider.getUrl() + "/card/get/" + TEST_CARD.getCardNumber(), Card.class);
 
-        Card expected = new Card(TEST_CARD.getOwner(), TEST_CARD.getCard(), true);
+        Card expected = new Card(TEST_CARD.getOwner(), TEST_CARD.getCardNumber(), true);
         Card received = re.getBody();
 
         Assert.assertEquals(expected, received);
