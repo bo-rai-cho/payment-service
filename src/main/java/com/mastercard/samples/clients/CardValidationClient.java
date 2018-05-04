@@ -8,12 +8,14 @@ public class CardValidationClient {
 
     private RestOperations restOperations;
 
+    public static String EXTERNAL_URL = "http://localhost:8090/card/get/";
+
     public CardValidationClient(RestOperations restOperations) {
         this.restOperations = restOperations;
     }
 
     public Boolean isValid(Card card) {
 
-        return restOperations.getForEntity("http://localhost:8090/card/get/" + card.getCardNumber(), Card.class).hasBody();
+        return restOperations.getForEntity(EXTERNAL_URL + card.getCardNumber(), Card.class).hasBody();
     }
 }
