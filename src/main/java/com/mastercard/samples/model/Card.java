@@ -14,7 +14,7 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public final class Card {
 
-    private String owner;
+    private String ooowner;
     private Long cardNumber;
     private Boolean active;
 
