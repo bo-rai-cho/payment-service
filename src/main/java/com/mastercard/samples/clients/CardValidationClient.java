@@ -17,6 +17,6 @@ public class CardValidationClient {
 
         ResponseEntity<Card> re = restOperations.getForEntity("http://docker.for.mac.localhost:8090/card/get/" + card.getCardNumber(), Card.class);
 
-        return re.getBody().getValid();
+        return re.getBody().getActive();
     }
 }
